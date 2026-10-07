@@ -1,0 +1,20 @@
+# 開発用: `docker compose up` で http://localhost:3000 が開きます。
+# Node.js を Mac に入れたくないとき用。入れてある場合は `npm run dev` のほうが速いです。
+services:
+  web:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - "3000:3000"
+    environment:
+      # Mac の Docker はファイル変更の検知が遅れることがあるため、ポーリングで監視する
+      WATCHPACK_POLLING: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    volumes:
+      - .:/app
+      # コンテナ内の node_modules を Mac 側のフォルダと分けておく
+      - node_modules:/app/node_modules
+
+volumes:
+  node_modules:
