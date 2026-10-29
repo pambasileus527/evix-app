@@ -5,7 +5,15 @@ import { useRouter } from "next/navigation";
 import { useId, useState, type FormEvent } from "react";
 import { createClient } from "@/lib/supabase/client";
 
-export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
+export default function AuthForm({
+  mode,
+  next = "/mycar",
+  notice: guide,
+}: {
+  mode: "login" | "signup";
+  next?: string;
+  notice?: string;
+}) {
   const uid = useId();
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -33,7 +41,7 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
         return;
       }
       if (data.session) {
-        router.push("/mycar");
+        router.push(next);
         router.refresh();
       } else {
         setNotice("確認メールを送りました。メール内のリンクを開いてから、ログインしてください。");
@@ -45,7 +53,7 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
         setError("メールアドレスかパスワードが違います");
         return;
       }
-      router.push("/mycar");
+      router.push(next);
       router.refresh();
     }
   }
@@ -78,6 +86,11 @@ export default function AuthForm({ mode }: { mode: "login" | "signup" }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
+      {guide && (
+        <p role="note" className="estimate-result">
+          {guide}
+        </p>
+      )}
       {error && (
         <p role="alert" className="form-error">
           {error}
