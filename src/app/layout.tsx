@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans_JP, Zen_Kaku_Gothic_New } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/SiteChrome";
+import { DemoBanner, SiteFooter, SiteHeader } from "@/components/SiteChrome";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -43,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ja" className={`${body.variable} ${display.variable} ${mono.variable}`}>
       <body>
+        <DemoBanner />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

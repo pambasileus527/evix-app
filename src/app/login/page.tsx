@@ -8,6 +8,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ n
   const safeNext = next && next.startsWith("/") && !next.startsWith("//") ? next : "/mycar";
   // マイカーなどログイン必須のページから来たときだけ案内を出す
   const notice = next ? "このページを見るにはログインが必要です。" : undefined;
+
   return (
     <div className="container section">
       <AuthForm mode="login" next={safeNext} notice={notice} />

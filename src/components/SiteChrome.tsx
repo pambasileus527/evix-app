@@ -2,6 +2,14 @@ import Link from "next/link";
 import AuthNav from "@/components/AuthNav";
 import { formatChange } from "@/lib/format";
 
+export function DemoBanner() {
+  return (
+    <div className="demo-banner" role="note">
+      これはポートフォリオ用のデモです。表示される相場・指数・業者はすべて架空のデータです。
+    </div>
+  );
+}
+
 export function SiteHeader() {
   return (
     <header className="site-header">

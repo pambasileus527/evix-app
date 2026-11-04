@@ -29,7 +29,6 @@ export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
   if (!user && path.startsWith("/mycar")) {
-    // ログイン後に元のページへ戻れるよう next を付ける。login 画面は next があると案内を出す。
     const url = new URL("/login", request.url);
     url.searchParams.set("next", path);
     return NextResponse.redirect(url);

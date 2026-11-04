@@ -34,7 +34,9 @@ export default function AuthNav() {
   if (state === "in") {
     return (
       <>
-        <Link href="/mycar">マイカー</Link>
+        <Link href="/mycar" className="nav-login">
+          マイカー
+        </Link>
         <button type="button" className="nav-logout" onClick={logout}>
           ログアウト
         </button>

@@ -670,10 +670,19 @@ table.data thead th {
 }
 .site-nav .nav-cta {
   background: var(--accent);
-  border: 1px solid var(--accent);
   color: #fff;
-  padding: 5px 14px;
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
   border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 36px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
 }
 .site-nav .nav-login,
 .site-nav .nav-logout {
@@ -691,6 +700,7 @@ table.data thead th {
 .site-nav .nav-login:hover,
 .site-nav .nav-logout:hover {
   background: rgba(255, 255, 255, 0.12);
+  color: #fff;
 }
 .site-nav .nav-slot {
   display: inline-block;
@@ -706,7 +716,6 @@ table.data thead th {
   box-sizing: border-box;
   min-height: 36px;
   padding: 0 16px;
-  border: 1px solid var(--accent);
   border-radius: 8px;
   font-size: 14px;
   font-weight: 700;
