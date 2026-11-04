@@ -4,26 +4,7 @@ import QuickEstimate from "@/components/QuickEstimate";
 import { Change } from "@/components/SiteChrome";
 import { getEstimatorTable, getMainIndex, getSubIndexes, summarize } from "@/lib/evix";
 import { formatMonth } from "@/lib/format";
-
-const STEPS = [
-  {
-    title: "「売りたい」を押す",
-    body: "車両情報と写真を送ります。名前や連絡先は業者に見えません。",
-  },
-  {
-    title: "業者が概算額を入札",
-    body: "EVに強い業者が、バッテリー状態も見て概算額を出します。",
-  },
-  {
-    title: "最大3社を自分で選ぶ",
-    body: "金額・評価・所在地を見て選んだ業者にだけ連絡先が届きます。",
-    key: true,
-  },
-  {
-    title: "チャットで商談",
-    body: "現車確認や契約の相談もチャットで。電話は希望したときだけ。",
-  },
-];
+import { STEPS } from "@/lib/steps";
 
 export default function HomePage() {
   const main = getMainIndex();
@@ -74,7 +55,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section reveal">
         <div className="container">
           <div className="section-head">
             <h2>メーカー別・地域別の指数</h2>
@@ -95,7 +76,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section reveal">
         <div className="container">
           <h2 style={{ marginBottom: 20 }}>売らなくても、毎月見たくなる</h2>
           <div className="grid grid-3">
@@ -128,7 +109,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="how" className="section section-white">
+      <section id="how" className="section section-white reveal">
         <div className="container">
           <h2>売りたくなったら、業者は自分で選ぶ</h2>
           <p className="fine" style={{ margin: "8px 0 24px", fontSize: 16 }}>
@@ -146,7 +127,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="dealer" className="section">
+      <section id="dealer" className="section reveal">
         <div className="container">
           <div className="cta">
             <div style={{ flex: "1 1 420px", minWidth: 0 }}>

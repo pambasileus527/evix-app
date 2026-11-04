@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "無料登録" };
 export default function Page() {
   return (
     <div className="container section">
-      <AuthForm mode="signup" />
+      <AuthForm mode="signup" next="/mycar" />
     </div>
   );
 }

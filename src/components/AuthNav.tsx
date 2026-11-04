@@ -33,14 +33,24 @@ export default function AuthNav() {
   if (state === "unknown") return <span className="nav-slot" aria-hidden="true" />;
   if (state === "in") {
     return (
-      <button type="button" className="nav-logout" onClick={logout}>
-        ログアウト
-      </button>
+      <>
+        <Link href="/mycar" className="nav-login">
+          マイカー
+        </Link>
+        <button type="button" className="nav-logout" onClick={logout}>
+          ログアウト
+        </button>
+      </>
     );
   }
   return (
-    <Link href="/signup" className="nav-cta">
-      無料登録
-    </Link>
+    <>
+      <Link href="/login" className="nav-login">
+        ログイン
+      </Link>
+      <Link href="/signup" className="nav-cta">
+        無料登録
+      </Link>
+    </>
   );
 }

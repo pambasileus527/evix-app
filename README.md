@@ -20,6 +20,7 @@
 - グラフは外部ライブラリを使わず SVG で描画
 - ホスティング：Vercel
 - ②以降：Supabase（PostgreSQL・認証、東京リージョン）
+- ローカル実行：Node.js または Docker（`docker-compose.yml`）
 
 ## 手元で動かす
 
@@ -30,24 +31,45 @@ npm run dev
 
 http://localhost:3000 を開きます。本番と同じ形で確認するときは `npm run build && npm start`。
 
+## 構成
+
+```
+ブラウザ ──▶ Vercel（Next.js：画面）
+   └──────▶ Supabase（認証・データベース・RLS）
+```
+
 ## ディレクトリ構成
 
 ```
 src/
   app/
     page.tsx                    トップ（EVIX指数・簡易査定・内訳指数）
+    evix/page.tsx               EVIX指数（チャート・内訳・計算方法）
     ev/page.tsx                 車種一覧
     ev/[maker]/[model]/page.tsx 車種別の相場ページ（年式別・走行距離別・バッテリー状態別）
+    flow/page.tsx               売却の流れ
+    dealers/page.tsx            業者の方へ
+    login/ signup/              ログイン・無料登録
+    mycar/                      マイカー・売りどきアラート（要ログイン）
     sitemap.ts / robots.ts      サイトマップ・robots.txt
   components/
     IndexChart.tsx              指数チャート（1年・3年・5年の切り替え）
     QuickEstimate.tsx           簡易査定フォーム
+    AuthForm.tsx / AuthNav.tsx  登録・ログインのフォーム／ヘッダーのログイン状態
+    CarForm.tsx                 愛車の登録フォーム
     SiteChrome.tsx              デモ帯・ヘッダー・フッター
   lib/
     models.ts                   車種マスタ（優先度Aの7車種）
     valuation.ts                基準価値（年式・走行距離・SOH による価値）
     dummy.ts                    ダミー取引データの生成（乱数の種を固定）
     evix.ts                     指数・相場の集計
+    mycar.ts                    マイカーの推定価値
+    steps.ts                    売却の流れの文面
+    supabase/                   Supabase への接続（ブラウザ用・サーバー用）
+  middleware.ts                 ログイン状態の更新と、未ログイン時の /login への振り分け
+supabase/migrations/            データベースの表と RLS（SQL）
+documents/                      README 以外のドキュメント
+docker-compose.yml              Docker での起動設定
 ```
 
 ## 指数の計算方法
@@ -69,3 +91,15 @@ src/
 
 要件定義書の8章（法令・コンプライアンス）と12章（ポートフォリオ版の前提条件）を参照。
 実データの契約、弁護士の確認、個人情報の取り扱いの整備が必要です。
+
+## ドキュメント
+
+詳細は `documents/` を参照してください。
+
+- [開発段階](./documents/開発段階.md)
+- [手元での動かし方](./documents/手元での動かし方.md)（Docker は [docker-起動方法](./documents/docker-起動方法.md)）
+- [システム構造と環境変数](./documents/システム構造と環境変数.md)
+- [指数の計算方法](./documents/指数の計算方法.md)
+- [公開手順](./documents/公開手順.md)
+- [トラブルシュート](./documents/トラブルシュート.md)
+- [実運用に必要なこと](./documents/実運用に必要なこと.md)

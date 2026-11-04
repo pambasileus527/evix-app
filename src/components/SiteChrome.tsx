@@ -36,11 +36,10 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="site-nav" aria-label="メインメニュー">
-          <Link href="/#index">EVIX指数</Link>
+          <Link href="/evix">EVIX指数</Link>
           <Link href="/ev">車種別相場</Link>
-          <Link href="/#how">売却の流れ</Link>
-          <Link href="/#dealer">業者の方へ</Link>
-          <Link href="/mycar">マイカー</Link>
+          <Link href="/flow">売却の流れ</Link>
+          <Link href="/dealers">業者の方へ</Link>
           <AuthNav />
         </nav>
       </div>
